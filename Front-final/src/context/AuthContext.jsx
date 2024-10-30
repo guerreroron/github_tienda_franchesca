@@ -1,51 +1,77 @@
-import React, { createContext, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import api from '../config/configAxios' 
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import api from '../config/configAxios'
 
-export const AuthContext = createContext()
+const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
-    const navigate = useNavigate()
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(localStorage.getItem('token'))
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
         if (token) {
-            api.defaults.headers.Authorization = `Bearer ${token}`
-            
+            const fetchUserData = async () => {
+                try {
+                    const response = await api.get('/auth/user', {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+                    setUser(response.data);
+                } catch (error) {
+                    console.error('Error al obtener los datos del usuario:', error);
+                }
+            };
+            fetchUserData();
         }
-    }, [])
+    }, [token]);
 
-    const login = async (email, password) => {
-        const response = await fetch('http://localhost:3000/api/auth/login', { email, password })
-        const { token, user } = await response.json()
-        localStorage.setItem('token', token)
-        api.defaults.headers.Authorization = `Bearer ${token}`
-        setUser(user)
-        navigate('/')
-    }
-    
-    const register = async (form) => {
-        const response = await fetch('http://localhost:3000/api/auth/register', form)
-        const { token, user } = await response.json()
-        localStorage.setItem('token', token)
-        api.defaults.headers.Authorization = `Bearer ${token}`
-        setUser(user)
-        navigate('/')
+    const registerUser = async (nombre, apellido, email, password) => {
+        try {
+            const response = await api.post('/auth/register', {
+                nombre,
+                apellido,
+                email,
+                password,
+            });
+            setUser(response.data.user);
+            setToken(response.data.token);
+            localStorage.setItem('token', response.data.token); 
+        } catch (error) {
+            console.error('Error al registrar el usuario:', error);
+            throw error;
+        }
+    };
+
+    const loginUser = async (email, password) => {
+        try {
+            const response = await api.post('/auth/login', {
+                email,
+                password,
+            })
+            setUser(response.data.user)
+            setToken(response.data.token)
+            localStorage.setItem('token', response.data.token)
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error)
+            throw error
+        }
     }
 
-    const logout = () => {
-        localStorage.removeItem('token')
+    const logoutUser = () => {
         setUser(null)
-        delete api.defaults.headers.Authorization
-        navigate('/login') 
+        setToken(null)
+        localStorage.removeItem('token')
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, token, registerUser, loginUser, logoutUser }}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
-export default AuthProvider
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
+
+export { AuthContext }

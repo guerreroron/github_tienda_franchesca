@@ -1,0 +1,269 @@
+.Navbar {
+    background-color: rgb(205, 19, 118);
+    width: 100%;
+    margin: auto;
+    padding-left:  30px ;
+    padding-right: 30px;
+  }
+  
+.containerNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto;
+    margin: auto;
+  }
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+.navlinkNavbar {
+    text-decoration: none;
+    text-decoration-line: none;
+    color: white;
+    background-attachment: fixed;
+  }
+
+.home {
+    text-align: center;
+  }
+  
+.homeImg {
+  background-image: url("../src/assets/img/BAnner3.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 20rem; 
+}
+
+.category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+.subcategory{
+    padding: 50px;
+}
+
+.novedades{
+  display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px; 
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; 
+  padding: 10px; 
+  text-align: center; 
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.product-image {
+  width: 80%; 
+  height: 200px;
+  object-fit: cover; 
+  display: block;
+  margin: 0 auto; 
+}
+
+.product-buttons {
+  margin-top: 10px; 
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-details {
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-details:hover {
+  background-color: #0056b3;
+}
+
+.btn-add-to-cart {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #218838;
+}
+
+.photo1{
+  padding: 50px;
+}
+
+.btn{
+  margin: 10px;
+}
+
+.ContainerRegister {
+    background-color: #dae8d0;
+    width: 35%;
+    height: 70vh;
+    border-radius: 3rem;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+.formRegister {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+.cards{
+    padding: 3rem; 
+}
+
+.photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.login{
+    padding: 3rem;   
+}
+
+.ContainerPublish{
+  margin: 70px;
+}
+
+.title1{
+text-align: center;
+margin: 40px;
+}
+
+.imgDetails {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px;
+  gap: 20px; 
+}
+
+.imgDetails img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.description {
+  text-align: center;
+}
+
+.description h2 {
+  margin-bottom: 10px;
+}
+
+.description p {
+  margin-bottom: 5px;
+}
+
+
+.description {
+  text-align: center;
+}
+
+.description h2 {
+  margin-bottom: 10px;
+}
+
+.description p {
+  margin-bottom: 5px;
+}
+
+.cart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* no funciona */
+  text-align: center; /* no funciona */
+}
+
+.cart-card img {
+  max-width: 100%; /* no funciona */
+  height: auto; /* no funciona */
+}
+
+.cart-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* no funciona */
+  text-align: center; /* no funciona */
+}
+
+.add-product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 600px; /*modificar*/
+  height: 530px;
+  margin: 0 auto;
+  padding: 2 rem;
+}
+
+.add-product-container h1 {
+  margin-bottom: 20px;
+}
+
+.add-product-container .form-control {
+  width: 100%;
+  max-width: 400px;
+}
+
+.footer{
+  background-color: rgba(255, 0, 0, 0.167);
+  color: white;
+  text-align: center;
+  }
+  
+  .footer .contactos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+.footer2{
+background-color: rgb(205, 19, 118);
+color: white;
+}
